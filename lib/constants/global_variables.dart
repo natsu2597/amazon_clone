@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
+String uri = 'http://192.168.42.248:3000';
 class GlobalVariable{
 
 
