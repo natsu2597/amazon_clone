@@ -2,6 +2,7 @@
 // Import for packages
 const express = require('express');
 const mongoose = require("mongoose");
+const adminRouter = require('./routes/admin');
 
 
 // Import for all files
@@ -15,6 +16,7 @@ const DB = "mongodb+srv://natsu2597:natsuSAMA1@cluster0.gqcqqnp.mongodb.net/?ret
 // middleware
 app.use(express.json())
 app.use(authRouter)
+app.use(adminRouter)
 
 // Connections
 mongoose.connect(DB).then(() => {
