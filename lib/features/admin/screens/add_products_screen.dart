@@ -146,6 +146,10 @@ class _AddProductsScreenState extends State<AddProductsScreen> {
                 SizedBox(height: 10,),
                 CustomButton(text: "Save", onTap: (){
                   sellProduct();
+                  setState(() {
+                    
+                  });
+
                 },
                 fontSize: 17,)
 

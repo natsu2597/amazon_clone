@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 
 class UserModel{
   final String id;
@@ -8,8 +9,9 @@ class UserModel{
   final String address;
   final String type;
   final String token;
+  final List<dynamic> cart;
 
-  UserModel({required this.id,required this.name,required this.email,required this.password,required this.address,required this.type,required this.token});
+  UserModel({ required this.cart, required this.id,required this.name,required this.email,required this.password,required this.address,required this.type,required this.token});
 
   
 
@@ -22,9 +24,9 @@ class UserModel{
       password : map['username'] ?? '',
       address : map['address'] ?? '',
       type : map['type'] ?? '',
-      token : map['token'] ?? ''
-
-    );
+      token : map['token'] ?? '',
+      cart : List<Map<String, dynamic>>.from(map['cart']?.map((x) => Map<String,dynamic>.from(x))
+    ));
   }
 
   Map<String,dynamic> toMap(){

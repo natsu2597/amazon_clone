@@ -25,7 +25,6 @@ class _AuthScreenState extends State<AuthScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
@@ -50,7 +49,7 @@ class _AuthScreenState extends State<AuthScreen> {
           
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Welcome',style: TextStyle(
+            const Text('Welcome',style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 24
             ),),
@@ -115,13 +114,13 @@ class _AuthScreenState extends State<AuthScreen> {
                     children: [
                       CustomTextField(controller: _nameController,
                       hintText: "Name",),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       CustomTextField(controller: _emailController,
                       hintText: "Email",),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       CustomTextField(controller: _passwordController,
                       hintText: "Password",),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       CustomButton(text: "Sign up", onTap: (){
                         if(_signUpFormKey.currentState!.validate()){
                           signUpUser();
@@ -148,13 +147,13 @@ class _AuthScreenState extends State<AuthScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       CustomTextField(controller: _emailController,
                       hintText: "Email",),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       CustomTextField(controller: _passwordController,
                       hintText: "Password",),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       CustomButton(text: "Sign-In", onTap: (){
                         if(_loginFormKey.currentState!.validate())
                         {

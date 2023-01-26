@@ -3,6 +3,8 @@
 
 import 'dart:convert';
 
+import 'package:amazon_clone/models/rating.dart';
+
 List<Product> productFromJson(String str) => List<Product>.from(jsonDecode(str));
 String productToJson(List<Product> data) => json.encode(List<dynamic>.from(data.map((e) => e.toJson)));   
 
@@ -14,9 +16,12 @@ class Product{
   final List<String> images;
   final String category;
   final String? id;
+  final List<Rating>? rating;
   
 
-  Product({required this.name,
+  Product({
+    this.rating,
+    required this.name,
    required this.description,
    required this.quantity,
    required this.price,
@@ -48,6 +53,7 @@ class Product{
       category: map['category'] ?? '',
       price: map['price']?.toDouble() ?? '',
       id: map['_id'] ?? '',
+      rating: map['rating'] != null ? List<Rating>.from(map['rating']?.map((x) => Rating.fromMap(x),),) : null, 
       
 
     );

@@ -1,37 +1,70 @@
 import 'package:amazon_clone/features/home/widgets/address_box.dart';
-import 'package:amazon_clone/features/home/widgets/carousel.dart';
-import 'package:amazon_clone/features/home/widgets/deal_of_day.dart';
-import 'package:amazon_clone/features/home/widgets/top_categories.dart';
-import 'package:amazon_clone/features/search/screens/search_screen.dart';
-import 'package:amazon_clone/providers/user_provider.dart';
+import 'package:amazon_clone/features/search/services/search_services.dart';
+import 'package:amazon_clone/features/search/widget/search_product.dart';
+import 'package:amazon_clone/models/product.dart';
+import 'package:amazon_clone/shared/widgets/loader.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constants/global_variables.dart';
 
-class HomeScreen extends StatefulWidget {
 
-  static const String routeName = "/home";
-  const HomeScreen({super.key});
+class SearchScreen extends StatefulWidget {
+  static const String routeName = "/search-screen";
+  final String query;
+  const SearchScreen({super.key, required this.query});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<SearchScreen> createState() => _SearchScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _SearchScreenState extends State<SearchScreen> {
+  List<Product>? products;
+  final SearchServices search = SearchServices();
+  @override
+  void initState() {
+    
+    super.initState();
+    searchProducts();
+  }
 
-  void navigateToSearchScreen(String query){
+     void navigateToSearchScreen(String query){
     Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
   }
 
 
+
+    searchProducts() async {
+      products = await search.searchProducts(context: context, query: widget.query);
+      setState(() {
+        
+      });
+    }
+
   @override
   Widget build(BuildContext context) {
+    return 
+          Scaffold(
+      appBar: _buildAppBar(),
+      body: products == null ? const Loader() : Column(
+        children: [
+          const AddressBox(),
+          const SizedBox(height: 10,),
+          Expanded(child: ListView.builder(
+          itemCount: products!.length,
+          itemBuilder: (context, index){
+            return SearchedProduct(product: products![index]);
+          }))
 
-    final user = Provider.of<UserProvider>(context).user;
-    return Scaffold(
-      
-      appBar: PreferredSize(
+        ],
+      ),
+    );
+  }
+
+
+
+   _buildAppBar() => 
+     PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: AppBar(
           flexibleSpace: Container(
@@ -98,24 +131,5 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-         children: const [
-          AddressBox(),
-          SizedBox(
-            height: 10,
-          ),
-          TopCategory(),
-          SizedBox(
-            height: 10,
-          ),
-          Carousel(),
-          SizedBox(height: 10,),
-          DealOfTheDay()
-         ],
-        ),
-      ),
-    );
-  }
+      );
 }
