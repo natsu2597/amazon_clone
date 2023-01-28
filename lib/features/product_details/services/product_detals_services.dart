@@ -37,7 +37,7 @@ class ProductDetailsServices {
           UserModel user =
               userProvider.user.copyWith(cart: jsonDecode(res.body)['cart']);
           userProvider.setUserFromModel(user);
-          print(jsonDecode(res.body)['cart']);
+          // print(jsonDecode(res.body)['cart']);
         },
       );
     } catch (e) {
