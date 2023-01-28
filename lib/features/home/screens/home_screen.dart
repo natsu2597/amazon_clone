@@ -31,7 +31,29 @@ class _HomeScreenState extends State<HomeScreen> {
     final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
       
-      appBar: PreferredSize(
+      appBar: _buildAppBar(),
+      body: SingleChildScrollView(
+        child: Column(
+         children: const [
+          AddressBox(),
+          SizedBox(
+            height: 10,
+          ),
+          TopCategory(),
+          SizedBox(
+            height: 10,
+          ),
+          Carousel(),
+          SizedBox(height: 10,),
+          DealOfTheDay()
+         ],
+        ),
+      ),
+    );
+  }
+
+  _buildAppBar() => 
+    PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: AppBar(
           flexibleSpace: Container(
@@ -98,24 +120,5 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-         children: const [
-          AddressBox(),
-          SizedBox(
-            height: 10,
-          ),
-          TopCategory(),
-          SizedBox(
-            height: 10,
-          ),
-          Carousel(),
-          SizedBox(height: 10,),
-          DealOfTheDay()
-         ],
-        ),
-      ),
-    );
-  }
+      );
 }

@@ -11,70 +11,61 @@ import 'package:http/http.dart' as http;
 
 import '../../../constants/global_variables.dart';
 
-class ProductDetailsServices{
-
+class ProductDetailsServices {
   void addToCart({
     required BuildContext context,
-    required Product product
-  }) async{
-
+    required Product product,
+  }) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
-    try{
-      http.Response res = await http.post(Uri.parse('$uri/api/add-to-cart'),
-      headers: {
-         'Content-Type' : 'application/json; charset=UTF-8',
-          'auth-token' : userProvider.user.token,
-      },
-      body: jsonEncode({
-        'id' : product.id!
-      })
+    try {
+      http.Response res = await http.post(
+        Uri.parse('$uri/api/add-to-cart'),
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+          'auth-token': userProvider.user.token,
+        },
+        body: jsonEncode({
+          'id': product.id!,
+        }),
       );
 
-      httpErrorHandler(response: res, context: context, onSuccess: (){
-          UserModel user = userProvider.user.copyWith(cart: jsonDecode(res.body)['cart']);
+      httpErrorHandler(
+        response: res,
+        context: context,
+        onSuccess: () {
+          UserModel user =
+              userProvider.user.copyWith(cart: jsonDecode(res.body)['cart']);
           userProvider.setUserFromModel(user);
-      });
-    }
-
-    catch(e)
-    {
-      showSnackBar(context, e.toString());
+          print(jsonDecode(res.body)['cart']);
+        },
+      );
+    } catch (e) {
+      showSnackBar(
+        context,
+        e.toString(),
+      );
     }
   }
-
-
-
 
   void rateProduct({
     required BuildContext context,
     required Product product,
-    required double rating
+    required double rating,
   }) async {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
 
-    final userProvider = Provider.of<UserProvider>(context,listen: false);
-
-    try{
+    try {
       http.Response res = await http.post(Uri.parse('$uri/api/rate-product'),
-      headers: {
-         'Content-Type' : 'application/json; charset=UTF-8',
-          'auth-token' : userProvider.user.token,
-      },
-      body: jsonEncode({
-        'id' : product.id!,
-        'rating' : rating
-      })
-      );
+          headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+            'auth-token': userProvider.user.token,
+          },
+          body: jsonEncode({'id': product.id!, 'rating': rating}));
 
-      httpErrorHandler(response: res, context: context, onSuccess: (){
-        
-      });
-    }
-
-    catch(e)
-    {
+      httpErrorHandler(response: res, context: context, onSuccess: () {});
+    } catch (e) {
       showSnackBar(context, e.toString());
     }
-
   }
 }

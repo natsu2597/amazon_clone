@@ -9,58 +9,53 @@ import 'package:flutter/material.dart';
 
 import 'features/home/screens/home_screen.dart';
 
-
-Route<dynamic> generateRoutes(RouteSettings settings){
-
-  switch(settings.name){
+Route<dynamic> generateRoutes(RouteSettings settings) {
+  switch (settings.name) {
     case AuthScreen.routeName:
       return MaterialPageRoute(
-        settings: settings,
-        builder: (_) => const AuthScreen());
+          settings: settings, builder: (_) => const AuthScreen());
 
+    case BottomBar.routeName:
+      return MaterialPageRoute(
+          settings: settings, builder: (_) => const BottomBar());
 
-      case BottomBar.routeName:
-        return MaterialPageRoute(
-          settings: settings,
-          builder: (_) => const BottomBar());
+    case AddProductsScreen.routeName:
+      return MaterialPageRoute(
+          settings: settings, builder: (_) => const AddProductsScreen());
 
-      case AddProductsScreen.routeName:
-        return MaterialPageRoute(
-          settings: settings,
-          builder: (_) => const AddProductsScreen());
+    case HomeScreen.routeName:
+      return MaterialPageRoute(
+          settings: settings, builder: (_) => const HomeScreen());
 
-
-      case HomeScreen.routeName:
-        return MaterialPageRoute(
-          settings: settings,
-          builder: (_) => const HomeScreen());
-
-      case CategoryDealScreen.routeName:
+    case CategoryDealScreen.routeName:
       var category = settings.arguments as String;
-        return MaterialPageRoute(
+      return MaterialPageRoute(
           settings: settings,
-          builder: (_) =>  CategoryDealScreen(
-            category: category,
-          ));
+          builder: (_) => CategoryDealScreen(
+                category: category,
+              ));
 
-
-      case SearchScreen.routeName:
-        var searchQuery = settings.arguments as String;
-        return MaterialPageRoute(
+    case SearchScreen.routeName:
+      var searchQuery = settings.arguments as String;
+      return MaterialPageRoute(
           settings: settings,
-          builder: (_) =>  SearchScreen(
-            query: searchQuery,
-          ));
+          builder: (_) => SearchScreen(
+                query: searchQuery,
+              ));
 
-      case ProductDetailsScreen.routeName:
-        var product = settings.arguments as Product;
-        return MaterialPageRoute(
+    case ProductDetailsScreen.routeName:
+      var product = settings.arguments as Product;
+      return MaterialPageRoute(
           settings: settings,
-          builder: (_) => ProductDetailsScreen(product: product,));
+          builder: (_) => ProductDetailsScreen(
+                product: product,
+              ));
 
     default:
-      return MaterialPageRoute(builder: (_) => const Scaffold(
-        body: Center(child: Text('Error loading check internet connection')),
-      ));
+      return MaterialPageRoute(
+          builder: (_) => const Scaffold(
+                body: Center(
+                    child: Text('Error loading check internet connection')),
+              ));
   }
 }

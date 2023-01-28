@@ -2,32 +2,24 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
-class Rating{
+class Rating {
   final String userId;
   final double rating;
 
-  Rating(
-    {required this.userId,
-     required this.rating
-     }
+  Rating({required this.userId, required this.rating});
+
+  Map<String, dynamic> toMap() {
+    return {'userId': userId, 'rating': rating};
+  }
+
+  factory Rating.fromMap(Map<String, dynamic> map) {
+    return Rating(
+      userId: map['userId'] ?? '',
+      rating: map['rating'].toDouble() ?? 0.0,
     );
-    
-    Map<String, dynamic> toMap(){
-      return {
-        'userId' : userId,
-        'rating' : rating
-      };
-    }
+  }
 
+  String toJson() => json.encode(toMap());
 
-    factory Rating.fromMap(Map<String,dynamic> map){
-      return Rating(
-        userId: map['userId'] ?? '',
-        rating: map['rating'].toDouble() ?? 0.0
-      );
-    }
-
-    String toJson() => json.encode(toMap());
-
-    factory Rating.fromJson(String source) => json.decode(source);
+  factory Rating.fromJson(String source) => json.decode(source);
 }

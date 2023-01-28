@@ -75,7 +75,7 @@ class SearchedProduct extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         fontWeight: FontWeight.bold
                       ),
-                      maxLines: 4,),
+                      ),
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 10),

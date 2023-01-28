@@ -68,7 +68,7 @@ class _SearchScreenState extends State<SearchScreen> {
         preferredSize: const Size.fromHeight(60),
         child: AppBar(
           flexibleSpace: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: GlobalVariable.appBarGradient
             ),
           ),
@@ -124,7 +124,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 color: Colors.transparent,
                 height: 42,
                 margin: const EdgeInsets.symmetric(horizontal: 10),
-                child: Icon(Icons.mic,color: Colors.black,size: 25,),
+                child: const Icon(Icons.mic,color: Colors.black,size: 25,),
               )
               
             ],
