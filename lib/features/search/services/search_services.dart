@@ -42,7 +42,8 @@ class SearchServices{
 
     catch(e)
     {
-      showSnackBar(context, e.toString());
+      // showSnackBar(context, e.toString());
+      print(e.toString());
     }
 
     return listProducts;

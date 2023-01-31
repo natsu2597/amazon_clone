@@ -123,6 +123,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       const SizedBox(height: 10,),
                       CustomButton(text: "Sign up", onTap: (){
                         if(_signUpFormKey.currentState!.validate()){
+                    
                           signUpUser();
                           print("Success");
                         }
@@ -157,6 +158,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       CustomButton(text: "Sign-In", onTap: (){
                         if(_loginFormKey.currentState!.validate())
                         {
+                          
                           signInUser();
                           print("Login success");
                         }

@@ -41,10 +41,11 @@ class ProductDetailsServices {
         },
       );
     } catch (e) {
-      showSnackBar(
-        context,
-        e.toString(),
-      );
+      // showSnackBar(
+      //   context,
+      //   e.toString(),
+      // );
+      print(e.toString());
     }
   }
 
@@ -65,7 +66,8 @@ class ProductDetailsServices {
 
       httpErrorHandler(response: res, context: context, onSuccess: () {});
     } catch (e) {
-      showSnackBar(context, e.toString());
+      // showSnackBar(context, e.toString());
+      print(e.toString());
     }
   }
 }

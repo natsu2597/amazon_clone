@@ -32,7 +32,8 @@ class CartServices {
         userProvider.setUserFromModel(user);
       });
     } catch (e) {
-      showSnackBar(context, e.toString());
+      // showSnackBar(context, e.toString());
+      print(e.toString());
     }
   }
 }

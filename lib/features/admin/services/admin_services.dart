@@ -51,13 +51,15 @@ class AdminServices{
       body: product.toJson()
       );
       httpErrorHandler(response: res, context: context, onSuccess: (){
-        showSnackBar(context, "Product added successfully");
+        // showSnackBar(context, "Product added successfully");
+        print("Product added successfully");
         Navigator.pop(context);
       });
     }
     catch(e){
       print(e);
-      showSnackBar(context, e.toString());
+      // showSnackBar(context, e.toString());
+      print(e.toString());
     }
   }
   //  Get all Products
@@ -94,8 +96,8 @@ class AdminServices{
     
     catch(e)
     {
-      showSnackBar(context, e.toString());
-      print(e);
+      // showSnackBar(context, e.toString());
+      print(e.toString());
     }
     print(listProducts);
     return listProducts;
@@ -124,7 +126,8 @@ class AdminServices{
 
         }
         catch(e){
-          showSnackBar(context, e.toString());
+          // showSnackBar(context, e.toString());
+          print(e.toString());
       
         }
   }

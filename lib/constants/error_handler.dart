@@ -11,20 +11,37 @@ void httpErrorHandler({
 }){
 
   switch(response.statusCode){
+    // case 200:
+    //   onSuccess();
+    //   break;
+
+    // case 400:
+    //   showSnackBar(context,jsonDecode(response.body)['msg']);
+    //   break;
+
+    // case 500:
+    //   showSnackBar(context, jsonDecode(response.body)['error']);
+    //   break;
+
+    // default:
+    //   showSnackBar(context,response.body);
+
+
+
     case 200:
       onSuccess();
       break;
 
     case 400:
-      showSnackBar(context,jsonDecode(response.body)['msg']);
+      print(jsonDecode(response.body)['msg']);
       break;
 
     case 500:
-      showSnackBar(context, jsonDecode(response.body)['error']);
+      print(jsonDecode(response.body)['error']);
       break;
 
     default:
-      showSnackBar(context,response.body);
+      print(response.body);
       
   }
 

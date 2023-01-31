@@ -42,7 +42,8 @@ class HomeServices{
 
       catch(e)
       {
-        showSnackBar(context, e.toString());
+        // showSnackBar(context, e.toString());
+        print(e.toString());
       }
       // print(listProducts);
       return listProducts;
@@ -73,7 +74,8 @@ class HomeServices{
       }
       catch(e)
       {
-        showSnackBar(context, e.toString());
+        // showSnackBar(context, e.toString());
+        print(e.toString());
       }
 
       return product;

@@ -1,3 +1,4 @@
+import 'package:amazon_clone/features/address/screens/adreess_screen.dart';
 import 'package:amazon_clone/features/cart/widgets/cart_product.dart';
 import 'package:amazon_clone/features/cart/widgets/cart_subtotal.dart';
 import 'package:amazon_clone/features/home/widgets/address_box.dart';
@@ -21,9 +22,18 @@ class _CashScreenState extends State<CashScreen> {
     Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
   }
 
+  void navigateToAddressScreen(int sum)
+  {
+    Navigator.pushNamed(context, AddressScreen.routeName, arguments: sum.toString());
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = context.watch<UserProvider>().user;
+    int sum = 0;
+    user.cart
+        .map((x) => sum += x['quantity'] * x['product']['price'] as int)
+        .toList();
     return Scaffold(
       appBar: _buildAppBar(),
       body: Column(
@@ -34,7 +44,7 @@ class _CashScreenState extends State<CashScreen> {
             padding: const EdgeInsets.all(8.0),
             child: CustomButton(
               text: "Proceed to buy ${user.cart.length} items",
-              onTap: () {},
+              onTap: () => navigateToAddressScreen(sum),
               fontSize: 18,
               color: Colors.yellow[600],
               textColor: Colors.black87,

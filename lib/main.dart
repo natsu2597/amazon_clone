@@ -21,6 +21,7 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
+  
   const MyApp({super.key});
 
   @override
@@ -29,6 +30,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final AuthService authService = AuthService();
+  
+  
 
   @override
   void initState() {
@@ -56,8 +59,12 @@ class _MyAppState extends State<MyApp> {
       home: Provider.of<UserProvider>(context).user.token.isNotEmpty ?
        Provider.of<UserProvider>(context).user.type == "user" ?
           const BottomBar() : const AdminScreen()
-      : const AuthScreen()
+      : const AuthScreen(),
+      
+      
     );
   }
+
+ 
 }
 
