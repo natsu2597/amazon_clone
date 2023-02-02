@@ -3,9 +3,8 @@ import 'package:amazon_clone/features/home/widgets/carousel.dart';
 import 'package:amazon_clone/features/home/widgets/deal_of_day.dart';
 import 'package:amazon_clone/features/home/widgets/top_categories.dart';
 import 'package:amazon_clone/features/search/screens/search_screen.dart';
-import 'package:amazon_clone/providers/user_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
 
 import '../../../constants/global_variables.dart';
 
@@ -28,7 +27,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
 
-    final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
       
       appBar: _buildAppBar(),
@@ -57,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
         preferredSize: const Size.fromHeight(60),
         child: AppBar(
           flexibleSpace: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: GlobalVariable.appBarGradient
             ),
           ),
@@ -113,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Colors.transparent,
                 height: 42,
                 margin: const EdgeInsets.symmetric(horizontal: 10),
-                child: Icon(Icons.mic,color: Colors.black,size: 25,),
+                child: const Icon(Icons.mic,color: Colors.black,size: 25,),
               )
               
             ],
